@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
 const JWT_SECRET = "claveSecreta";
-const JWT_EXPIRES_IN = "30s";
+const JWT_EXPIRES_IN = "2m";
 
 async function login(req, res) {
   const { username, password } = req.body;
@@ -33,7 +33,7 @@ async function login(req, res) {
 async function createUser(req, res) {
   const { username, password } = req.body;
   if (!username || !password) {
-    return res.status(400).json({ code: 400, message: "Faltan datos" });
+    return res.status(400).json({ code: 400, message: "Faltan datos" }); //error
   }
 
   const userExists = userModel.getUserByUsername(username);
